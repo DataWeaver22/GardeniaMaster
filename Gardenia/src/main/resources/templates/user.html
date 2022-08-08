@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Master</title>
+<link rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">User Master</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/user}">User Master</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	<div class="container">
+		<div class = "row">
+			<h1>User List</h1>
+		</div>
+		
+		<div class = "row">
+			<div class = "col-lg-3">
+				<a th:href="@{/user/new}" class ="btn btn-primary btn_sm mb-3"> Add User</a>
+			</div>
+		</div>
+		
+		<table class="table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+					<th>Login </th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Employee Code</th>
+					<th>Team </th>
+					<th>Role</th>
+					<th>Status</th>
+					<th>Create Date</th>
+					<th>Resign Date </th>
+					<th>Region Name</th>
+					<th>Region Id</th>
+					<th>State Name</th>
+					<th>State Id </th>
+					<th>HQ Name</th>
+					<th>HQ Id</th>
+					<th>Documents</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user: ${user}">
+					<td th:text="${user.login}"></td>
+					<td th:text="${user.firstName}"></td>
+					<td th:text="${user.lastName}"></td>
+					<td th:text="${user.emp_code}"></td>
+					<td th:text="${user.team}"></td>
+					<td th:text="${user.roles}"></td>
+					<td th:text="${user.status}"></td>
+					<td th:text="${user.create_date}"></td>
+					<td th:text="${user.resign_date}"></td>
+					<td th:text="${region.region_name}"></td>
+					<td th:text="${region.id}"></td>
+					<td th:text="${state.state_name}"></td>
+					<td th:text="${state.id}"></td>
+					<td th:text="${hqmaster.hq_name}"></td>
+					<td th:text="${hqmaster.id}"></td>
+					<td th:text="${user.documents}"></td>
+					<td>
+						<a th:href="@{/hqmaster/edit/{id}(id=${hqmaster.id})}"
+						 class="btn btn-primary">Edit</a>
+						 <a th:href="@{/hqmaster/{id}(id=${hqmaster.id})}"
+						 class="btn btn-danger">Delete</a>
+					</td>	
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
